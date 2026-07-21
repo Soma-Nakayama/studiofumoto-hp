@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STUDIO FUMOTO｜静岡の空間デザインスタジオ</title>
+<meta name="description" content="STUDIO FUMOTO(スタジオ フモト)は、静岡を拠点とする空間デザインスタジオです。店舗設計・インテリアデザインを中心に、「おかえりを育む」場づくりを実践しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f4efe4;
+    --parchment:#e9e0cc;
+    --olive:#5c5f3f;
+    --olive-deep:#3f4129;
+    --ink:#2a281f;
+    --ink-soft:#5a564a;
+    --line:#cabfa6;
+    --white:#fbf8f1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Serif JP',serif;
+    background:var(--cream);
+    color:var(--ink);
+    font-weight:300;
+    line-height:2.1;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--olive);color:var(--cream);}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .en{font-family:'Cormorant Garamond',serif;}
+
+  /* ---------- header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 5vw;
+    background:linear-gradient(to bottom, rgba(244,239,228,.92), rgba(244,239,228,0));
+    backdrop-filter:blur(2px);
+  }
+  .logo .en{font-size:20px;letter-spacing:.22em;font-weight:500;}
+  nav{display:flex;gap:32px;}
+  nav a{
+    font-size:13.5px;letter-spacing:.22em;
+    position:relative;padding-bottom:3px;
+  }
+  nav a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
+    background:var(--olive);transition:width .4s ease;
+  }
+  nav a:hover::after,nav a:focus-visible::after{width:100%;}
+  nav a:focus-visible{outline:1px solid var(--olive);outline-offset:4px;}
+
+  /* ---------- hero (work slider) ---------- */
+  .hero{
+    height:100svh;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:0 5vw 14vh;
+  }
+  .slider{position:absolute;inset:0;z-index:0;}
+  .slider-track{
+    display:flex;height:100%;
+    transition:transform 1.2s cubic-bezier(.65,0,.35,1);
+  }
+  .slide{
+    flex:0 0 100%;height:100%;position:relative;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--parchment);
+  }
+  .slide:nth-child(2n){background:#e2d8c0;}
+  .slide:nth-child(3n){background:#ddd2b8;}
+  .slide img{
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(.55) sepia(.14) contrast(.93) brightness(1.02);
+  }
+  .slide .slide-label{
+    font-size:13px;letter-spacing:.4em;color:var(--line);
+  }
+  .slide::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(42,40,31,.35), rgba(42,40,31,0) 55%);
+    pointer-events:none;
+  }
+  .hero .eyebrow{
+    position:relative;z-index:1;
+    font-size:12.5px;letter-spacing:.42em;color:var(--white);
+    text-shadow:0 1px 12px rgba(42,40,31,.4);
+    margin-bottom:22px;
+  }
+  .hero h1{
+    position:relative;z-index:1;
+    font-size:clamp(40px,7vw,92px);
+    font-weight:400;letter-spacing:.14em;line-height:1.4;
+    color:var(--white);
+    text-shadow:0 2px 24px rgba(42,40,31,.45);
+  }
+  .slide-caption{
+    position:absolute;right:5vw;bottom:6vh;z-index:1;
+    font-size:11.5px;letter-spacing:.3em;color:rgba(251,248,241,.85);
+    text-shadow:0 1px 10px rgba(42,40,31,.5);
+  }
+  .scroll-cue{
+    position:absolute;left:5vw;bottom:5vh;z-index:1;
+    display:flex;align-items:center;gap:14px;
+    font-size:11px;letter-spacing:.3em;
+    color:rgba(251,248,241,.85);
+    text-shadow:0 1px 10px rgba(42,40,31,.5);
+  }
+  .scroll-cue::after{
+    content:"";width:64px;height:1px;background:var(--line);
+    animation:cue 2.6s ease-in-out infinite;
+    transform-origin:left;
+  }
+  @keyframes cue{0%,100%{transform:scaleX(.4);opacity:.5;}50%{transform:scaleX(1);opacity:1;}}
+
+  /* ---------- sections ---------- */
+  section{padding:120px 5vw;}
+  .sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:64px;}
+  .sec-head .jp{
+    font-size:clamp(26px,3.4vw,38px);font-weight:400;letter-spacing:.22em;
+  }
+  .sec-head .en{
+    font-size:14px;letter-spacing:.24em;color:var(--olive);font-style:italic;
+  }
+  .sec-head::after{
+    content:"";flex:1;height:1px;background:var(--line);
+    transform:translateY(-6px);
+  }
+
+  /* ---------- about (mission / philosophy) ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:start;margin-bottom:88px;}
+  .about h3{
+    font-size:clamp(26px,3vw,36px);font-weight:400;
+    letter-spacing:.18em;line-height:1.9;margin-bottom:30px;
+  }
+  .about .label{
+    font-size:12px;letter-spacing:.4em;color:var(--olive);margin-bottom:14px;
+  }
+  .about p{color:var(--ink-soft);font-size:14.5px;margin-bottom:18px;}
+  .profile{
+    border-top:1px solid var(--line);padding-top:44px;
+    display:grid;grid-template-columns:auto 1fr;gap:8vw;align-items:start;
+  }
+  .profile .name-jp{font-size:22px;letter-spacing:.3em;font-weight:400;white-space:nowrap;}
+  .profile .name-role{font-size:12.5px;letter-spacing:.2em;color:var(--ink-soft);margin-top:6px;}
+  .profile dl{display:grid;grid-template-columns:auto 1fr;gap:10px 28px;font-size:13.5px;color:var(--ink-soft);}
+  .profile dt{white-space:nowrap;letter-spacing:.1em;color:var(--ink);}
+
+  /* ---------- work ---------- */
+  .work{background:var(--parchment);}
+  .work-item{
+    display:grid;grid-template-columns:1fr 1fr;gap:6vw;
+    align-items:center;padding:72px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .work-item:last-child{border-bottom:none;}
+  .work-item:nth-child(even) .ph{order:2;}
+  .ph{
+    aspect-ratio:4/3;background:var(--cream);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--line);font-size:13px;letter-spacing:.3em;
+    overflow:hidden;
+  }
+  .ph img{
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(.72) sepia(.08) contrast(.96);
+    transition:transform .8s ease, filter .8s ease;
+  }
+  .ph.has-gallery{cursor:pointer;position:relative;}
+  .ph.has-gallery::after{
+    content:"詳細を見る →";
+    position:absolute;right:14px;bottom:12px;
+    font-size:10.5px;letter-spacing:.25em;color:rgba(251,248,241,.9);
+    text-shadow:0 1px 8px rgba(42,40,31,.6);
+    opacity:0;transition:opacity .4s ease;
+  }
+  .ph.has-gallery:hover img{transform:scale(1.03);filter:saturate(.85) sepia(.04);}
+  .ph.has-gallery:hover::after{opacity:1;}
+
+  /* ---------- work detail page ---------- */
+  .detail{
+    position:fixed;inset:0;z-index:200;background:var(--cream);
+    overflow-y:auto;display:none;
+  }
+  .detail.open{display:block;}
+  .detail-bar{
+    position:sticky;top:0;z-index:5;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 5vw;
+    background:linear-gradient(to bottom, rgba(244,239,228,.96), rgba(244,239,228,.7));
+    backdrop-filter:blur(3px);
+  }
+  .detail-back{
+    background:none;border:none;cursor:pointer;
+    font-family:'Noto Serif JP',serif;font-weight:300;
+    font-size:13px;letter-spacing:.25em;color:var(--ink);
+    padding-bottom:2px;border-bottom:1px solid var(--line);
+    transition:border-color .3s ease;
+  }
+  .detail-back:hover{border-color:var(--olive);}
+  .detail-inner{max-width:960px;margin:0 auto;padding:6vh 6vw 14vh;}
+  .detail-inner h2{
+    font-size:clamp(32px,5vw,52px);font-weight:400;letter-spacing:.16em;
+    margin-bottom:10px;
+  }
+  .detail-meta{
+    font-size:12px;letter-spacing:.28em;color:var(--ink-soft);
+    margin-bottom:64px;
+  }
+  .detail-label{
+    font-size:11px;letter-spacing:.4em;color:var(--ink-soft);
+    margin:72px 0 10px;padding-top:40px;border-top:1px solid var(--line);
+  }
+  .detail-inner .concept-title{
+    font-size:22px;letter-spacing:.14em;color:var(--olive);
+    font-weight:500;margin-bottom:26px;
+  }
+  .detail-concept p{
+    color:var(--ink-soft);font-size:14.5px;line-height:2.4;margin-bottom:22px;
+  }
+  .detail-figure{margin:0 0 6vh;}
+  .detail-figure img{
+    width:100%;height:auto;display:block;
+    border:1px solid var(--line);
+  }
+  .detail-note{color:var(--ink-soft);font-size:13.5px;}
+  footer{
+    background:var(--olive-deep);color:rgba(244,239,228,.5);
+    padding:40px 5vw;font-size:12px;letter-spacing:.2em;
+    display:flex;justify-content:space-between;align-items:center;
+    border-top:1px solid rgba(233,224,204,.15);
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .scroll-cue::after{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:820px){
+    nav{display:none;}
+    .about-grid,.contact-grid,.profile{grid-template-columns:1fr;gap:40px;}
+    .work-item{grid-template-columns:1fr;gap:32px;padding:56px 0;}
+    .work-item:nth-child(even) .ph{order:0;}
+    .services-grid{grid-template-columns:1fr;}
+    section{padding:88px 6vw;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#top" aria-label="STUDIO FUMOTO トップへ">
+    <span class="en">STUDIO FUMOTO</span>
+  </a>
+  <nav aria-label="サイト内メニュー">
+    <a href="#about">私たちについて</a>
+    <a href="#work">仕事</a>
+    <a href="#services">できること</a>
+    <a href="#contact">ご相談</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO (WORK SLIDER) ================= -->
+  <div class="hero">
+    <div class="slider" aria-hidden="true">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide" data-caption="長谷川和洋酒｜レジカウンター造作"><img src="images/hasegawa_1.jpg" alt="長谷川和洋酒 レジカウンター"></div>
+        <div class="slide" data-caption="長谷川和洋酒｜レジカウンター造作"><img src="images/hasegawa_6.jpg" alt="長谷川和洋酒 レジカウンター"></div>
+      </div>
+    </div>
+    <p class="eyebrow">静岡｜空間デザインスタジオ</p>
+    <h1>おかえりを育む</h1>
+    <div class="slide-caption" id="slideCaption">長谷川和洋酒｜レジカウンター造作</div>
+    <div class="scroll-cue">下へ</div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="about">
+    <div class="sec-head reveal">
+      <span class="jp">私たちについて</span>
+      <span class="en">About</span>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="label">使命 — MISSION</div>
+        <h3>地元を創る。</h3>
+        <p>地元は本来、意図してつくるものではなく、人と人の関わりや時間の積み重ねで自然に育まれてきたもの。</p>
+        <p>けれど、その“当たり前”に胡座をかいてはいけない。人が離れ、関係が薄れ、帰る理由が見えにくくなっている今だからこそ、もう一度「これからの地元」をより良いものへと創り直していく。</p>
+        <p>建築を通して「おかえり」が交わせる環境を育み、誰もが帰ってこられる場所をつくる。</p>
+      </div>
+      <div class="reveal">
+        <div class="label">理念 — PHILOSOPHY</div>
+        <h3>おかえりを、はぐくむ。</h3>
+        <p>「おかえり」という言葉は、帰る場所と迎える人があって初めて成り立ちます。若者が挑戦のために地元を離れることを応援しつつ、その帰り道にもう一度立ち寄れる場所を建築で育てていく。</p>
+        <p>「挑戦の地」と「帰る地」の両方を支える建築で、次世代の“地元”を創ります。</p>
+      </div>
+    </div>
+    <div class="profile reveal">
+      <div>
+        <div class="name-jp">中山 聡真</div>
+        <div class="name-role">Nakayama Soma｜Interior & Architectural Designer</div>
+      </div>
+      <dl>
+        <dt>2019–2022</dt><dd>静岡県内の建築設計事務所 — 戸建・集合住宅、店舗、クリニック、街づくりなど、幅広い用途の建築設計を担当。</dd>
+        <dt>2022–2023</dt><dd>東京都内の一級建築士事務所 — 店舗設計をメインとして多くの業種の店舗設計、インテリアデザインを担当。</dd>
+        <dt>2023–2025</dt><dd>東京都内の一級建築士事務所 — 新築住宅、大型住宅、別荘、マンションリノベーションなどの設計を担当。</dd>
+        <dt>2026–</dt><dd>STUDIO FUMOTO 設立。静岡を拠点に活動。</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ================= WORK ================= -->
+  <section class="work" id="work">
+    <div class="sec-head reveal">
+      <span class="jp">仕事</span>
+      <span class="en">Selected Work</span>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="ph has-gallery" data-project="zesshin" role="button" tabindex="0" aria-label="舌心の詳細を見る">PHOTO — 舌心</div>
+      <div>
+        <h3>舌心</h3>
+        <div class="meta">牛串酒場｜静岡市葵区｜2026</div>
+        <div class="concept-label">設計理念 — CONCEPT</div>
+        <div class="concept-title">カオス —混沌—</div>
+        <p>洗練された重厚な扑を開け放つ。その瞬間、冷徹な「建前」は崩れ去り、熱気と野性が剥き出しの闇市が牙を剥く。炭の爆ぜる音と、肉の焦げる匂い。【虚】【鄙】【寂】——三つの景を渡り、肉を喰らう原始的な喜びに没頭する牛串酒場。</p>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="ph has-gallery" data-project="regolith" role="button" tabindex="0" aria-label="Regolithの詳細を見る">PHOTO — Regolith</div>
+      <div>
+        <h3>Regolith</h3>
+        <div class="meta">フレンチ｜2026</div>
+        <div class="concept-label">設計理念 — CONCEPT</div>
+        <div class="concept-title">純化 —じゅんか—</div>
+        <p>外の喧騒を抜け、店内に足を踏み入れた瞬間から、日常のノイズが静かに削ぎ落とされる。研ぎ澄まされた感覚のすべてを「一皿」へと向ける。【研ぐ【層】【碇】の思想を重ね、心から美食に没頭できる、大人のための特別な場所を目指したフレンチレストラン。</p>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="ph has-gallery" data-project="hasegawa" role="button" tabindex="0" aria-label="長谷川和洋酒の詳細を見る">
+        <img src="images/hasegawa_1.jpg" alt="長谷川和洋酒 レジカウンター">
+      </div>
+      <div>
+        <h3>長谷川和洋酒</h3>
+        <div class="meta">レジカウンター造作｜静岡｜2026</div>
+        <p>酒販店のレジカウンターを一枚板で造作。什器ひとつから、店の顔をつくります。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services">
+    <div class="sec-head reveal">
+      <span class="jp">できること</span>
+      <span class="en">Services</span>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service">
+        <h3>店舗設計</h3>
+        <p>飲食店・物販店の新規出店設計。コンセプト立案、レイアウト、内装設計、照明・設備計画、施工監理まで一貫して担当します。保健所協議などの実務も含めて伴走します。</p>
+      </div>
+      <div class="service">
+        <h3>リノベーション</h3>
+        <p>既存店舗・住宅の改修設計。いまある建物の良さを見立て、残すものと変えるものを丁寧に切り分けながら、費用対効果の高い改修を設計します。</p>
+      </div>
+      <div class="service">
+        <h3>家具・什器</h3>
+        <p>空間に合わせたオリジナル家具・什器のデザインと製作手配。カウンター、テーブル、サイン、取っ手ひとつまで、空間と同じ思想でつくります。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact">
+    <div class="sec-head reveal">
+      <span class="jp">ご相談</span>
+      <span class="en">Contact</span>
+    </div>
+    <div class="contact-grid reveal">
+      <p>新規出店・改修のご相談、まだ構想段階のお話でも歓迎です。物件探しの段階からご一緒できると、できることが大きく広がります。メールにてお気軽にご連絡ください。</p>
+      <dl>
+        <dt>アトリエ</dt>
+        <dd>静岡県焼津市焼津1丁目5-1 N.lien 3階</dd>
+        <dt>メール</dt>
+        <dd><a href="mailto:info@studiofumoto.com">info@studiofumoto.com</a></dd>
+        <dt>Instagram</dt>
+        <dd><a href="https://www.instagram.com/studiofumoto/" target="_blank" rel="noopener">@studiofumoto</a></dd>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<div class="detail" id="detail" role="dialog" aria-modal="true">
+  <div class="detail-bar">
+    <button class="detail-back" id="detailBack">← 一覧へ戻る</button>
+    <span class="en" style="letter-spacing:.22em;font-size:15px;">STUDIO FUMOTO</span>
+  </div>
+  <div class="detail-inner" id="detailInner"></div>
+</div>
+
+<footer>
+  <span class="en">STUDIO FUMOTO</span>
+  <span>© 2026 STUDIO FUMOTO. All rights reserved.</span>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // ---- hero auto slider ----
+  (function(){
+    const track=document.getElementById('sliderTrack');
+    const caption=document.getElementById('slideCaption');
+    if(!track) return;
+    const slides=Array.from(track.children);
+    const n=slides.length;
+    if(n<2) return;
+    // 先頭スライドの複製を末尾に足してシームレスにループ
+    track.appendChild(slides[0].cloneNode(true));
+    let i=0;
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const INTERVAL=5000;
+    function go(){
+      i++;
+      track.style.transform=`translateX(-${i*100}%)`;
+      const cap=slides[i%n].dataset.caption||'';
+      if(caption) caption.textContent=cap;
+      if(i===n){
+        // 複製スライドに到達したら、アニメ完了後に瞬間的に先頭へ戻す
+        setTimeout(()=>{
+          track.style.transition='none';
+          i=0;
+          track.style.transform='translateX(0)';
+          void track.offsetWidth; // reflow
+          track.style.transition='';
+        },1250);
+      }
+    }
+    if(!reduced) setInterval(go, INTERVAL);
+  })();
+
+  // ---- work detail pages ----
+  const PROJECTS = {
+    zesshin: {
+      title:"舌心", meta:"牛串酒場｜静岡市葵区｜2026",
+      conceptTitle:"カオス —混沌—",
+      concept:[
+        "洗練された重厚な扉を開け放つ。その瞬間、冷徹な「建前」は崩れ去り、熱気と野性が剥き出しの闇市が牙を剥く。",
+        "炭の爆ぜる音と、肉の焦ける匂い。猥雑な路地裏の混沌が、人間の本能を鷲掴みにする。",
+        "そして、その熱狂を抜け切った最奥には、外界から完全に隔離された絶対的な静寂が待つ。",
+        "外殻の嘘と、内に燃える本能。人間の下心を暴き出す比類なき空間で、肉を喰らう原始的な喜びに没頭する。"
+      ],
+      cgs:[], photos:[],
+      note:"竣工写真は現在準備中です。"
+    },
+    regolith: {
+      title:"Regolith", meta:"フレンチ｜2026",
+      conceptTitle:"純化 —じゅんか—",
+      concept:[
+        "外の喧騒を抜け、店内に足を踏み入れた瞬間から、日常のノイズが静かに削ぎ落とされる。",
+        "空間の深さを活かして重ねた層が、非日常の景色を演出する。",
+        "情報を削ぎ落とした静かな店内で、研ぎ澄まされた感覚のすべてを「一皿」へと向ける。",
+        "心から美食に没頭できる、大人のための特別な場所を目指す。"
+      ],
+      cgs:[], photos:[],
+      note:"2026年9月竣工予定。竣工写真は完成後に掲載します。"
+    },
+    hasegawa: {
+      title:"長谷川和洋酒", meta:"レジカウンター造作｜静岡｜2026",
+      conceptTitle:"", concept:[],
+      cgs:["images/hasegawa_cg_1.jpg","images/hasegawa_cg_2.jpg","images/hasegawa_cg_3.jpg"],
+      photos:["images/hasegawa_1.jpg","images/hasegawa_2.jpg","images/hasegawa_3.jpg","images/hasegawa_4.jpg","images/hasegawa_5.jpg","images/hasegawa_6.jpg","images/hasegawa_7.jpg"],
+      note:""
+    }
+  };
+  (function(){
+    const detail=document.getElementById('detail');
+    const inner=document.getElementById('detailInner');
+    function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+    function open(key){
+      const p=PROJECTS[key]; if(!p) return;
+      let h=`<h2>${esc(p.title)}</h2><div class="detail-meta">${esc(p.meta)}</div>`;
+      if(p.concept.length){
+        h+=`<div class="detail-label">設計理念 — CONCEPT</div>`;
+        h+=`<div class="concept-title">${esc(p.conceptTitle)}</div>`;
+        h+=`<div class="detail-concept">`+p.concept.map(t=>`<p>${esc(t)}</p>`).join('')+`</div>`;
+      }
+      if(p.cgs.length){
+        h+=`<div class="detail-label">CGパース — PERSPECTIVE</div>`;
+        h+=p.cgs.map((s,i)=>`<figure class="detail-figure"><img src="${s}" alt="${esc(p.title)} CGパース ${i+1}" loading="lazy"></figure>`).join('');
+      }
+      if(p.photos.length){
+        h+=`<div class="detail-label">竣工写真 — PHOTOGRAPHS</div>`;
+        h+=p.photos.map((s,i)=>`<figure class="detail-figure"><img src="${s}" alt="${esc(p.title)} 竣工写真 ${i+1}" loading="lazy"></figure>`).join('');
+      }
+      if(p.note){
+        h+=`<div class="detail-label">お知らせ — NOTE</div><p class="detail-note">${esc(p.note)}</p>`;
+      }
+      inner.innerHTML=h;
+      detail.classList.add('open');
+      detail.scrollTop=0;
+      document.body.style.overflow='hidden';
+    }
+    function close(){
+      detail.classList.remove('open');
+      document.body.style.overflow='';
+    }
+    document.querySelectorAll('[data-project]').forEach(el=>{
+      el.addEventListener('click',()=>open(el.dataset.project));
+      el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(el.dataset.project);}});
+    });
+    document.getElementById('detailBack').addEventListener('click',close);
+    document.addEventListener('keydown',e=>{
+      if(detail.classList.contains('open')&&e.key==='Escape')close();
+    });
+  })();
+</script>
+
+</body>
+</html>
