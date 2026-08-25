@@ -18,6 +18,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   STUDIO FUMOTO — design tokens
+   （手書きロゴの地色・墨色に合わせたベージュ×苔）
+   ============================================================ */
 :root{
   --beige:#EFE5D3;
   --beige-soft:#F4EDDF;
@@ -40,18 +44,24 @@ body{
   line-height:2.1;
   letter-spacing:.06em;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden}
+  overflow-x:hidden;
+}
 ::selection{background:var(--moss);color:var(--beige)}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .en{font-family:var(--serif-en)}
 :focus-visible{outline:2px solid var(--moss);outline-offset:3px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ============================================================
+   0. イントロ：手書き「おかえりを育む」→ ふわーんと消える
+   ============================================================ */
 #intro{
   position:fixed;inset:0;z-index:200;
   background:var(--beige);
   display:flex;align-items:center;justify-content:center;
-  transition:opacity 1s ease}
+  transition:opacity 1s ease;
+}
 #intro.done{opacity:0;pointer-events:none}
 #intro img{
   width:min(62vw,540px);
@@ -61,37 +71,54 @@ a{color:inherit;text-decoration:none}
   -webkit-mask-position:98% 0;mask-position:98% 0;
   animation:
     write 2.6s cubic-bezier(.45,.05,.35,1) .4s forwards,
-    fuwan 1.4s ease 3.6s forwards}
+    fuwan 1.4s ease 3.6s forwards;
+}
 @keyframes write{to{-webkit-mask-position:0% 0;mask-position:0% 0}}
 @keyframes fuwan{to{opacity:0;filter:blur(10px);transform:translateY(-8px) scale(1.02)}}
 @media (prefers-reduced-motion:reduce){#intro{display:none}}
+
+/* ============================================================
+   1. ヘッダー
+   ============================================================ */
 header{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;justify-content:space-between;align-items:center;
-  padding:26px clamp(20px,5vw,60px)}
+  padding:26px clamp(20px,5vw,60px);
+}
 header .logo .en{
   font-size:clamp(15px,1.5vw,19px);letter-spacing:.4em;font-weight:500;
   color:var(--white);transition:color .5s;
-  text-shadow:0 1px 14px rgba(30,30,22,.35)}
+  text-shadow:0 1px 14px rgba(30,30,22,.35);
+}
 nav{display:flex;gap:clamp(14px,2.6vw,38px)}
 nav a{
   font-size:13px;letter-spacing:.22em;color:var(--white);
   position:relative;padding-bottom:3px;transition:color .5s;
-  text-shadow:0 1px 12px rgba(30,30,22,.35)}
+  text-shadow:0 1px 12px rgba(30,30,22,.35);
+}
 nav a::after{
   content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
-  background:currentColor;transition:width .4s ease}
+  background:currentColor;transition:width .4s ease;
+}
 nav a:hover::after,nav a:focus-visible::after{width:100%}
 header.scrolled{background:linear-gradient(rgba(239,229,211,.95) 60%,rgba(239,229,211,0))}
 header.scrolled .logo .en,header.scrolled nav a{color:var(--moss);text-shadow:none}
-@media (max-width:560px){nav a{font-size:11.5px;letter-spacing:.14em}}
+@media (max-width:560px){
+  nav a{font-size:11.5px;letter-spacing:.14em}
+}
+
+/* ============================================================
+   2. ヒーロー：施工写真シャッフル・クロスフェード
+   ============================================================ */
 .hero{position:relative;height:100svh;overflow:hidden;background:#232219}
 .hero .slide{
   position:absolute;inset:0;opacity:0;
-  transition:opacity 1.8s ease}
+  transition:opacity 1.8s ease;
+}
 .hero .slide img{
   width:100%;height:100%;object-fit:cover;
-  filter:saturate(.55) sepia(.14) contrast(.93) brightness(1.02)}
+  filter:saturate(.55) sepia(.14) contrast(.93) brightness(1.02);
+}
 .hero .slide.active{opacity:1}
 .hero .slide.active img{animation:kenburns 7.5s ease-out forwards}
 @keyframes kenburns{from{transform:scale(1.05)}to{transform:scale(1)}}
@@ -100,48 +127,68 @@ header.scrolled .logo .en,header.scrolled nav a{color:var(--moss);text-shadow:no
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
     linear-gradient(rgba(30,30,22,.3),transparent 24%),
-    linear-gradient(transparent 74%,rgba(30,30,22,.34))}
+    linear-gradient(transparent 74%,rgba(30,30,22,.34));
+}
 .hero .eyebrow{
   position:absolute;left:clamp(20px,5vw,60px);bottom:15vh;z-index:2;
   font-size:12.5px;letter-spacing:.42em;color:var(--white);
-  text-shadow:0 1px 12px rgba(30,30,22,.4)}
+  text-shadow:0 1px 12px rgba(30,30,22,.4);
+}
 .slide-caption{
   position:absolute;right:clamp(20px,5vw,60px);bottom:6vh;z-index:2;
   font-size:11.5px;letter-spacing:.3em;color:rgba(251,248,241,.85);
   text-shadow:0 1px 10px rgba(30,30,22,.5);
-  transition:opacity .5s}
+  transition:opacity .5s;
+}
 .slide-caption.fade{opacity:0}
 .scroll-cue{
   position:absolute;left:clamp(20px,5vw,60px);bottom:6vh;z-index:2;
   display:flex;align-items:center;gap:14px;
   font-size:11px;letter-spacing:.3em;color:rgba(251,248,241,.85);
-  text-shadow:0 1px 10px rgba(30,30,22,.5)}
+  text-shadow:0 1px 10px rgba(30,30,22,.5);
+}
 .scroll-cue::after{
   content:"";width:64px;height:1px;background:rgba(251,248,241,.8);
-  animation:cue 2.6s ease-in-out infinite;transform-origin:left}
+  animation:cue 2.6s ease-in-out infinite;transform-origin:left;
+}
 @keyframes cue{0%,100%{transform:scaleX(.4);opacity:.5}50%{transform:scaleX(1);opacity:1}}
+
+/* ============================================================
+   sections 共通
+   ============================================================ */
 section{padding:clamp(90px,13vh,150px) clamp(24px,6vw,64px)}
 .inner{max-width:1120px;margin:0 auto}
 .sec-head{display:flex;align-items:baseline;gap:24px;margin-bottom:clamp(48px,8vh,76px)}
 .sec-head .jp{
   font-size:clamp(24px,3vw,34px);font-weight:400;letter-spacing:.3em;
-  white-space:nowrap;color:var(--moss)}
+  white-space:nowrap;color:var(--moss);
+}
 .sec-head .en{font-size:13px;letter-spacing:.3em;color:var(--sand);font-style:italic;white-space:nowrap}
 .sec-head::after{content:"";flex:1;height:1px;background:var(--line);transform:translateY(-6px)}
+
+/* ============================================================
+   3. 私たちについて
+   ============================================================ */
 .about-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:7vw;
-  align-items:start;margin-bottom:clamp(64px,10vh,96px)}
+  align-items:start;margin-bottom:clamp(64px,10vh,96px);
+}
 .about .label{
   font-family:var(--serif-en);font-size:12px;letter-spacing:.38em;
-  color:var(--sand);margin-bottom:18px}
+  color:var(--sand);margin-bottom:18px;
+}
 .about h3{
   font-size:clamp(24px,2.8vw,32px);font-weight:400;
-  letter-spacing:.18em;line-height:1.9;margin-bottom:28px;color:var(--moss)}
-.about .okaeri-logo{width:min(72vw,340px);margin:6px 0 30px}
+  letter-spacing:.18em;line-height:1.9;margin-bottom:28px;color:var(--moss);
+}
+.about .okaeri-logo{
+  width:min(72vw,340px);margin:6px 0 30px;
+}
 .about p{color:var(--ink-soft);font-size:14.5px;margin-bottom:18px}
 .profile{
   border-top:1px solid var(--line);padding-top:48px;
-  display:grid;grid-template-columns:auto 1fr;gap:7vw;align-items:start}
+  display:grid;grid-template-columns:auto 1fr;gap:7vw;align-items:start;
+}
 .profile .name-jp{font-size:22px;letter-spacing:.3em;font-weight:400;white-space:nowrap;color:var(--moss)}
 .profile .name-role{font-family:var(--serif-en);font-size:12.5px;letter-spacing:.16em;color:var(--sand);margin-top:8px}
 .profile dl{display:grid;grid-template-columns:auto 1fr;gap:10px 32px;font-size:13.5px}
@@ -150,97 +197,140 @@ section{padding:clamp(90px,13vh,150px) clamp(24px,6vw,64px)}
 @media (max-width:760px){
   .about-grid,.profile{grid-template-columns:1fr;gap:48px}
   .profile dl{grid-template-columns:1fr;gap:2px}
-  .profile dd{margin-bottom:14px}}
+  .profile dd{margin-bottom:14px}
+}
+
+/* ============================================================
+   4. 仕事
+   ============================================================ */
 .work-grid{
   display:grid;gap:clamp(32px,4vw,56px);
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
 .work-item .ph{
-  aspect-ratio:4/3;overflow:hidden;background:#DDD3BE;cursor:pointer}
+  aspect-ratio:4/3;overflow:hidden;background:#DDD3BE;cursor:pointer;
+}
 .work-item .ph img{
   width:100%;height:100%;object-fit:cover;
   filter:saturate(.55) sepia(.14) contrast(.93) brightness(1.02);
-  transition:transform 1.2s ease}
+  transition:transform 1.2s ease;
+}
 .work-item .ph:hover img,.work-item .ph:focus-visible img{transform:scale(1.04)}
 .work-item h3{
   margin-top:18px;font-size:17px;font-weight:400;
-  letter-spacing:.16em;color:var(--moss)}
+  letter-spacing:.16em;color:var(--moss);
+}
 .work-item .meta{margin-top:4px;font-size:12px;letter-spacing:.12em;color:var(--sand)}
 .work-item .view{
   font-family:var(--serif-en);font-size:11px;letter-spacing:.28em;
-  color:var(--sand);margin-top:10px;font-style:italic}
+  color:var(--sand);margin-top:10px;font-style:italic;
+}
+
+/* ============================================================
+   5. できること
+   ============================================================ */
 .services-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:0 clamp(32px,4vw,64px);
-  border-top:1px solid var(--line)}
+  border-top:1px solid var(--line);
+}
 .service{padding:40px 4px;border-bottom:1px solid var(--line)}
 .service h3{
   font-size:18px;font-weight:400;letter-spacing:.24em;
-  color:var(--moss);margin-bottom:18px}
+  color:var(--moss);margin-bottom:18px;
+}
 .service p{font-size:13.5px;color:var(--ink-soft)}
+
+/* ============================================================
+   6. ご相談：苔色で反転、視認性を最優先に
+   ============================================================ */
 #contact{background:var(--moss);color:var(--beige)}
 #contact .sec-head .jp{color:var(--beige)}
 #contact .sec-head .en{color:rgba(239,229,211,.55)}
 #contact .sec-head::after{background:rgba(239,229,211,.3)}
 #contact .lead{
   max-width:660px;font-size:clamp(13.5px,1.5vw,15px);
-  margin-bottom:clamp(52px,8vh,80px)}
+  margin-bottom:clamp(52px,8vh,80px);
+}
 #contact dl{
   display:grid;gap:40px;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
 #contact dt{
   font-family:var(--serif-en);font-size:12px;letter-spacing:.34em;
-  color:rgba(239,229,211,.6);margin-bottom:12px}
+  color:rgba(239,229,211,.6);margin-bottom:12px;
+}
 #contact dd{font-size:clamp(16px,1.8vw,19px);letter-spacing:.06em}
 #contact dd a{
   border-bottom:1px solid rgba(239,229,211,.5);
-  padding-bottom:3px;transition:border-color .3s}
+  padding-bottom:3px;transition:border-color .3s;
+}
 #contact dd a:hover{border-color:var(--beige)}
 #contact .addr{font-size:15px;line-height:2}
 #contact .mailbtn{
   display:inline-block;margin-top:60px;
   padding:18px 54px;border:1px solid rgba(239,229,211,.6);
   font-size:14px;letter-spacing:.3em;
-  transition:background .4s,color .4s}
+  transition:background .4s,color .4s;
+}
 #contact .mailbtn:hover{background:var(--beige);color:var(--moss)}
+
+/* ============================================================
+   7. フッター
+   ============================================================ */
 footer{
   background:var(--moss-deep);color:rgba(239,229,211,.75);
   padding:44px clamp(24px,6vw,64px);
   display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:12px}
+  flex-wrap:wrap;gap:12px;
+}
 footer .en{letter-spacing:.4em;font-size:13px}
 footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
+
+/* ============================================================
+   作品詳細（モーダル）
+   ============================================================ */
 .detail{
   position:fixed;inset:0;z-index:150;background:var(--beige-soft);
   overflow-y:auto;transform:translateY(100%);
-  transition:transform .7s cubic-bezier(.65,0,.35,1)}
+  transition:transform .7s cubic-bezier(.65,0,.35,1);
+}
 .detail.open{transform:translateY(0)}
 .detail-bar{
   position:sticky;top:0;z-index:2;
   display:flex;justify-content:space-between;align-items:center;
   padding:22px clamp(20px,5vw,60px);
-  background:linear-gradient(var(--beige-soft) 70%,transparent)}
+  background:linear-gradient(var(--beige-soft) 70%,transparent);
+}
 .detail-back{
   font-family:var(--serif-jp);font-size:13px;letter-spacing:.2em;
-  background:none;border:none;color:var(--moss);cursor:pointer;padding:6px 2px}
+  background:none;border:none;color:var(--moss);cursor:pointer;padding:6px 2px;
+}
 .detail-inner{max-width:880px;margin:0 auto;padding:40px clamp(24px,6vw,64px) 140px}
 .detail-inner h2{
   font-size:clamp(28px,4vw,42px);font-weight:400;
-  letter-spacing:.24em;color:var(--moss)}
+  letter-spacing:.24em;color:var(--moss);
+}
 .detail-meta{font-size:13px;letter-spacing:.16em;color:var(--sand);margin:10px 0 56px}
 .detail-label{
   font-family:var(--serif-en);font-size:12px;letter-spacing:.36em;
-  color:var(--sand);margin:72px 0 22px;font-style:italic}
+  color:var(--sand);margin:72px 0 22px;font-style:italic;
+}
 .concept-title{
   font-size:clamp(21px,2.6vw,27px);letter-spacing:.3em;
-  color:var(--moss);margin-bottom:24px}
+  color:var(--moss);margin-bottom:24px;
+}
 .detail-concept p{font-size:14.5px;color:var(--ink-soft);margin-bottom:16px}
 .detail-figure{margin-bottom:28px}
 .detail-figure img{width:100%}
 .detail-note{font-size:13.5px;color:var(--ink-soft)}
+
+/* スクロールで現れる要素 */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}}
+  .reveal{opacity:1;transform:none;transition:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -263,6 +353,7 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
 </head>
 <body>
 
+<!-- ================= INTRO ================= -->
 <div id="intro" aria-hidden="true">
   <img src="images/okaeri_logo.svg" alt="">
 </div>
@@ -282,12 +373,14 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
 <main id="top">
   <h1 class="sr-only">STUDIO FUMOTO｜静岡の空間デザインスタジオ — おかえりを育む</h1>
 
+  <!-- ================= HERO (SHUFFLED CROSSFADE) ================= -->
   <div class="hero" id="hero">
     <p class="eyebrow">静岡｜空間デザインスタジオ</p>
     <div class="slide-caption" id="slideCaption"></div>
     <div class="scroll-cue">下へ</div>
   </div>
 
+  <!-- ================= ABOUT ================= -->
   <section class="about" id="about">
     <div class="inner">
       <div class="sec-head reveal">
@@ -298,15 +391,16 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
         <div class="reveal">
           <div class="label">MISSION</div>
           <h3>地元を創る。</h3>
-          <p>地元は本来、意図してつくるものではなく、人と人の関わりや時間の穴み重ねで自然に育まれてきたもの。</p>
-          <p>けれど、その“当たり前”に胡座をかいてはいけない。人が離れ、関係が薄れ、帰る理由が見えにくくなっている今だからこそ、もう一度「これからの地元」をより良いものへと創り直していく。</p>
-          <p>建築を通して「おかえり」が交わせる環境を育み、誰もが帰ってこられる場所をつくる。</p>
+          <p>地元は、誰かが意図してつくるものではなく、人と人の関わりと時間の積み重ねのなかで、自然と育まれてきたものです。</p>
+          <p>けれどいま、人が離れ、関係が薄れ、帰る理由が見えにくくなっている。「あって当たり前」ではなくなった地元を、もう一度、これからの世代のために創り直していく。</p>
+          <p>建築を通して「おかえり」が交わされる環境を育み、誰もが帰ってこられる場所をつくります。</p>
         </div>
         <div class="reveal">
           <div class="label">PHILOSOPHY</div>
-          <img class="okaeri-logo" src="images/okaeri_logo.svg" alt="おかえりを、はぐくむ。">
-          <p>「おかえり」という言葉は、帰る場所と迎える人があって初めて成り立ちます。若者が挑戦のために地元を離れることを応援しつつ、その帰り道にもう一度立ち寄れる場所を建築で育てていく。</p>
-          <p>「挑戦の地」と「帰る地」の両方を支える建築で、次世代の“地元”を創ります。</p>
+          <h3>おかえりを育む</h3>
+          <p>「おかえり」は、帰る場所と、迎えてくれる人がいて、はじめて成り立つ言葉です。</p>
+          <p>一日の終わりに灯りがついている。扉を開けると、いつもの声がする。そんな何気ないやりとりがくれる安心感や温かみは、本来、誰にとっても当たり前であってほしいもの。</p>
+          <p>挑戦する日も、疲れて帰る日も、変わらずに迎えてくれる場所がある。その当たり前を、建築で育てていきます。</p>
         </div>
       </div>
       <div class="profile reveal">
@@ -324,6 +418,7 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
     </div>
   </section>
 
+  <!-- ================= WORK ================= -->
   <section class="work" id="work">
     <div class="inner">
       <div class="sec-head reveal">
@@ -359,6 +454,7 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
     </div>
   </section>
 
+  <!-- ================= SERVICES ================= -->
   <section id="services">
     <div class="inner">
       <div class="sec-head reveal">
@@ -382,6 +478,7 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
     </div>
   </section>
 
+  <!-- ================= CONTACT ================= -->
   <section id="contact">
     <div class="inner">
       <div class="sec-head reveal">
@@ -423,21 +520,24 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
 </footer>
 
 <script>
+  // ---- scroll reveal ----
   const obs=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
   },{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+  // ---- hero：施工写真をシャッフルしてクロスフェード ----
   const HERO_IMAGES=[
     {src:"images/hasegawa_1.jpg",  caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンター"},
     {src:"images/hasegawa_3.jpg",  caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンター"},
     {src:"images/hasegawa_6.jpg",  caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンター"},
     {src:"images/shitagokoro_cg_1.jpg", caption:"舌心｜牛串酒場", alt:"舌心 店内CGパース"},
-    {src:"images/regolith_cg_1.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 外�3CGパース"},
+    {src:"images/regolith_cg_1.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 外観CGパース"},
   ];
   const INTERVAL=5000;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Fisher–Yates：読み込むたびに順番が変わる
   for(let i=HERO_IMAGES.length-1;i>0;i--){
     const j=Math.floor(Math.random()*(i+1));
     [HERO_IMAGES[i],HERO_IMAGES[j]]=[HERO_IMAGES[j],HERO_IMAGES[i]];
@@ -472,6 +572,7 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
     if(!reduced && slides.length>1) setInterval(next,INTERVAL);
   }
 
+  // ---- intro：1セッション1回だけ再生 ----
   const intro=document.getElementById('intro');
   const seen=sessionStorage.getItem('introSeen');
   if(seen||reduced){
@@ -479,16 +580,18 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
     startSlides();
   }else{
     sessionStorage.setItem('introSeen','1');
-    setTimeout(startSlides,4200);
+    setTimeout(startSlides,4200);                       // 消え際の裏で1枚目を出しておく
     setTimeout(()=>intro.classList.add('done'),4800);
     setTimeout(()=>intro.remove(),6000);
   }
 
+  // ---- header：ヒーローを抜けたら苔色に ----
   const headerEl=document.getElementById('header');
   addEventListener('scroll',()=>{
     headerEl.classList.toggle('scrolled',scrollY>innerHeight*0.72);
   },{passive:true});
 
+  // ---- work detail pages ----
   const PROJECTS = {
     zesshin: {
       title:"舌心", meta:"牛串酒場｜静岡県静岡市｜35.95㎡",
@@ -507,7 +610,7 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
       title:"Regolith", meta:"フレンチ｜静岡県静岡市｜51.54㎡",
       conceptTitle:"純化 —じゅんか—",
       concept:[
-        "外の喧騒を抜け、店内に足を踏み入れた瞬間から、日常のノイズが静かに剥ぎ落とされる。",
+        "外の喧騒を抜け、店内に足を踏み入れた瞬間から、日常のノイズが静かに削ぎ落とされる。",
         "空間の深さを活かして重ねた層が、非日常の景色を演出する。",
         "情報を削ぎ落とした静かな店内で、研ぎ澄まされた感覚のすべてを「一皿」へと向ける。",
         "心から美食に没頭できる、大人のための特別な場所を目指す。"
