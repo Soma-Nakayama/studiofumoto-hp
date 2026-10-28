@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STUDIO FUMOTO｜静岡の空間デザインスタジオ</title>
-<meta name="description" content="STUDIO FUMOTO(スタジオ フモト)は、静岡を拠点とする空間デザインスタジオです。店舗設計・インテリアデザイン・マンションリノベーションを中心に、「おかえりを育む」場づくりを実践しています。">
+<title>STUDIO FUMOTO｜静岡の内装設計事務所</title>
+<meta name="description" content="STUDIO FUMOTO（スタジオ フモト）は、静岡を拠点に、店舗設計・マンションリノベーション・造作家具の設計と工事監理を行う内装設計事務所です。「おかえりを育む」場づくりを実践しています。">
 <link rel="canonical" href="https://studiofumoto.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="STUDIO FUMOTO">
-<meta property="og:title" content="STUDIO FUMOTO｜静岡の空間デザインスタジオ">
-<meta property="og:description" content="STUDIO FUMOTO（スタジオ フモト）は、静岡を拠点とする空間デザインスタジオです。店舗デザイン・内装設計・マンション（住宅）リノベーション・工事監理を一貫してお手伝いします。">
+<meta property="og:title" content="STUDIO FUMOTO｜静岡の内装設計事務所">
+<meta property="og:description" content="STUDIO FUMOTO（スタジオ フモト）は、静岡を拠点とする内装設計事務所です。店舗設計・マンション（住宅）リノベーション・造作家具の設計から工事監理までを一貫してお手伝いします。">
 <meta property="og:url" content="https://studiofumoto.com/">
 <meta property="og:image" content="https://studiofumoto.com/images/regolith_cg_4.jpg">
 <meta property="og:locale" content="ja_JP">
@@ -352,7 +352,7 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
   "@type": "ProfessionalService",
   "name": "STUDIO FUMOTO",
   "alternateName": "スタジオ フモト",
-  "description": "静岡を拠点とする空間デザインスタジオ。飲食店・物販店の店舗デザイン、内装設計、マンション・住宅のリノベーション、工事監理までを一貫して手がける。",
+  "description": "静岡を拠点とする内装設計事務所。飲食店・物販店の店舗設計、マンション・住宅のリノベーション、造作家具の設計から工事監理までを一貫して手がける。",
   "url": "https://studiofumoto.com/",
   "email": "info@studiofumoto.com",
   "image": "https://studiofumoto.com/images/regolith_cg_4.jpg",
@@ -385,11 +385,11 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
 </header>
 
 <main id="top">
-  <h1 class="sr-only">STUDIO FUMOTO｜静岡の空間デザインスタジオ — おかえりを育む</h1>
+  <h1 class="sr-only">STUDIO FUMOTO｜静岡の内装設計事務所 — おかえりを育む</h1>
 
   <!-- ================= HERO (CROSSFADE: Regolith → 舌心) ================= -->
   <div class="hero" id="hero">
-    <p class="eyebrow">静岡｜空間デザインスタジオ</p>
+    <p class="eyebrow">静岡｜内装設計事務所</p>
     <div class="slide-caption" id="slideCaption"></div>
     <div class="scroll-cue">下へ</div>
   </div>
@@ -413,7 +413,7 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
       <div class="profile reveal">
         <div>
           <div class="name-jp">中山 聡真</div>
-          <div class="name-role">Nakayama Soma｜Interior &amp; Architectural Designer</div>
+          <div class="name-role">Nakayama Soma｜Interior Designer</div>
         </div>
         <dl>
           <dt>2019–2022</dt><dd>静岡県内の建築設計事務所 — 戸建・集合住宅、店舗、クリニック、街づくりなど、幅広い用途の建築設計を担当。</dd>
@@ -560,24 +560,59 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
   },{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  // ---- hero：Regolith → 舌心 → 長谷川和洋酒 の順にクロスフェード ----
-  const HERO_IMAGES=[
-    {src:"images/regolith_cg_4.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 店内CGパース"},
-    {src:"images/regolith_cg_2.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 店内CGパース"},
+  // ---- hero：Works の CG・施工写真をシャッフルしてクロスフェード ----
+  const HERO_POOL=[
     {src:"images/regolith_cg_1.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 外観CGパース"},
+    {src:"images/regolith_cg_2.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 店内CGパース"},
     {src:"images/regolith_cg_3.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 店内CGパース"},
-    {src:"images/regolith_cg_6.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 個室CGパース"},
+    {src:"images/regolith_cg_4.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 店内CGパース"},
     {src:"images/regolith_cg_5.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 店内CGパース"},
+    {src:"images/regolith_cg_6.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith 個室CGパース"},
+    {src:"images/regolith_cg_7.jpg",    caption:"Regolith｜フレンチ", alt:"Regolith サインCGパース"},
     {src:"images/shitagokoro_cg_1.jpg", caption:"舌心｜牛串酒場", alt:"舌心 店内CGパース"},
     {src:"images/shitagokoro_cg_2.jpg", caption:"舌心｜牛串酒場", alt:"舌心 店内CGパース"},
-    {src:"images/shitagokoro_cg_4.jpg", caption:"舌心｜牛串酒場", alt:"舌心 外観CGパース"},
     {src:"images/shitagokoro_cg_3.jpg", caption:"舌心｜牛串酒場", alt:"舌心 店内CGパース"},
+    {src:"images/shitagokoro_cg_4.jpg", caption:"舌心｜牛串酒場", alt:"舌心 外観CGパース"},
     {src:"images/shitagokoro_cg_5.jpg", caption:"舌心｜牛串酒場", alt:"舌心 個室CGパース"},
+    {src:"images/reno_cg_1.jpg",        caption:"VIEW RESIDENCE｜マンションリノベーション", alt:"VIEW RESIDENCE リビングCGパース"},
+    {src:"images/reno_cg_2.jpg",        caption:"VIEW RESIDENCE｜マンションリノベーション", alt:"VIEW RESIDENCE CGパース"},
+    {src:"images/reno_cg_3.jpg",        caption:"VIEW RESIDENCE｜マンションリノベーション", alt:"VIEW RESIDENCE CGパース"},
+    {src:"images/reno_cg_4.jpg",        caption:"VIEW RESIDENCE｜マンションリノベーション", alt:"VIEW RESIDENCE CGパース"},
+    {src:"images/reno_cg_5.jpg",        caption:"VIEW RESIDENCE｜マンションリノベーション", alt:"VIEW RESIDENCE CGパース"},
+    {src:"images/reno_cg_6.jpg",        caption:"VIEW RESIDENCE｜マンションリノベーション", alt:"VIEW RESIDENCE CGパース"},
+    {src:"images/reno_cg_7.jpg",        caption:"VIEW RESIDENCE｜マンションリノベーション", alt:"VIEW RESIDENCE CGパース"},
+    {src:"images/reno_cg_8.jpg",        caption:"VIEW RESIDENCE｜マンションリノベーション", alt:"VIEW RESIDENCE CGパース"},
+    {src:"images/reno_cg_9.jpg",        caption:"VIEW RESIDENCE｜マンションリノベーション", alt:"VIEW RESIDENCE CGパース"},
+    {src:"images/reno_cg_10.jpg",       caption:"VIEW RESIDENCE｜マンションリノベーション", alt:"VIEW RESIDENCE CGパース"},
+    {src:"images/hasegawa_cg_1.jpg",    caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンターCGパース"},
+    {src:"images/hasegawa_cg_2.jpg",    caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンターCGパース"},
+    {src:"images/hasegawa_cg_3.jpg",    caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンターCGパース"},
     {src:"images/hasegawa_1.jpg",       caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンター"},
+    {src:"images/hasegawa_2.jpg",       caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンター"},
+    {src:"images/hasegawa_3.jpg",       caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンター"},
+    {src:"images/hasegawa_4.jpg",       caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンター"},
+    {src:"images/hasegawa_5.jpg",       caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンター"},
+    {src:"images/hasegawa_6.jpg",       caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンター"},
+    {src:"images/hasegawa_7.jpg",       caption:"長谷川和洋酒｜レジカウンター造作", alt:"長谷川和洋酒 レジカウンター"},
   ];
   const INTERVAL=5000;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // 順番は固定：Regolith 6枚 → 舌心 5枚 → 長谷川和洋酒 1枚
+
+  // 表示のたびに完全ランダム（Fisher–Yates）。ただし同じ案件が続かないように並べ替える
+  function shuffle(a){
+    for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+    return a;
+  }
+  function spread(list){
+    const out=[];const rest=list.slice();
+    while(rest.length){
+      let k=rest.findIndex(it=>!out.length||it.caption!==out[out.length-1].caption);
+      if(k<0)k=0;
+      out.push(rest.splice(k,1)[0]);
+    }
+    return out;
+  }
+  const HERO_IMAGES=spread(shuffle(HERO_POOL.slice()));
 
   const hero=document.getElementById('hero');
   const cap=document.getElementById('slideCaption');
@@ -585,16 +620,19 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
     const d=document.createElement('div');
     d.className='slide';
     const im=document.createElement('img');
-    im.src=src; im.alt=alt;
+    im.dataset.src=src; im.alt=alt;          // 33枚を一度に読まず、表示直前に読み込む
     d.appendChild(im);
     hero.prepend(d);
     return d;
   });
+  function load(i){const im=slides[i].querySelector('img');if(!im.src)im.src=im.dataset.src;}
+  load(0); load(1);
 
   let idx=-1;
   function next(){
     const prev=idx;
     idx=(idx+1)%slides.length;
+    load(idx); load((idx+1)%slides.length);
     cap.classList.add('fade');
     setTimeout(()=>{
       if(prev>=0)slides[prev].classList.remove('active');
@@ -651,9 +689,9 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
         "情報を削ぎ落とした静かな店内で、研ぎ澄まされた感覚のすべてを「一皿」へと向ける。",
         "心から美食に没頭できる、大人のための特別な場所を目指す。"
       ],
-      cgs:["images/regolith_cg_1.jpg","images/regolith_cg_2.jpg","images/regolith_cg_3.jpg","images/regolith_cg_4.jpg","images/regolith_cg_5.jpg","images/regolith_cg_6.jpg"],
+      cgs:["images/regolith_cg_1.jpg","images/regolith_cg_2.jpg","images/regolith_cg_3.jpg","images/regolith_cg_4.jpg","images/regolith_cg_5.jpg","images/regolith_cg_6.jpg","images/regolith_cg_7.jpg"],
       photos:[],
-      note:"2026年10月竣工予定。竣工写真は完成後に掲載します。"
+      note:"竣工写真は現在準備中です。"
     },
     renovation: {
       title:"VIEW RESIDENCE", meta:"マンションリノベーション計画案｜静岡県静岡市｜66.00㎡｜2LDK→1LDK",
