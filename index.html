@@ -345,6 +345,9 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
 }
+/* 画像の保存対策：右クリック・長押し・ドラッグを無効化（スクショは防げない） */
+img{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;pointer-events:none}
+.ph img{pointer-events:none}
 </style>
 <script type="application/ld+json">
 {
@@ -742,19 +745,40 @@ footer small{font-family:var(--serif-en);font-size:11px;letter-spacing:.18em}
       detail.scrollTop=0;
       document.body.style.overflow='hidden';
     }
-    function close(){
+    function hide(){
       detail.classList.remove('open');
       document.body.style.overflow='';
     }
+    // 詳細は履歴に1段積む（#work=regolith）。ブラウザの「戻る」やスワイプで一覧に戻れる
+    function show(key){
+      if(!PROJECTS[key]) return;
+      if(location.hash!=='#work='+key) history.pushState({work:key},'', '#work='+key);
+      open(key);
+    }
+    function close(){
+      if(history.state&&history.state.work){ history.back(); }   // popstate で hide される
+      else { hide(); if(location.hash) history.replaceState(null,'',location.pathname+location.search); }
+    }
+    addEventListener('popstate',()=>{
+      const m=location.hash.match(/^#work=([a-z]+)$/);
+      if(m&&PROJECTS[m[1]]) open(m[1]); else hide();
+    });
     document.querySelectorAll('[data-project]').forEach(el=>{
-      el.addEventListener('click',()=>open(el.dataset.project));
-      el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(el.dataset.project);}});
+      el.addEventListener('click',()=>show(el.dataset.project));
+      el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(el.dataset.project);}});
     });
     document.getElementById('detailBack').addEventListener('click',close);
     document.addEventListener('keydown',e=>{
       if(detail.classList.contains('open')&&e.key==='Escape')close();
     });
+    // #work=xxx 付きで開かれたら（共有リンク・リロード）直接その詳細を表示
+    const m0=location.hash.match(/^#work=([a-z]+)$/);
+    if(m0&&PROJECTS[m0[1]]){ history.replaceState({work:m0[1]},'',location.hash); open(m0[1]); }
   })();
+  // ---- 画像の保存対策（右クリック・ドラッグ禁止） ----
+  document.addEventListener('contextmenu',e=>{ if(e.target.closest('img,.hero,.detail-figure,.ph')) e.preventDefault(); });
+  document.addEventListener('dragstart',e=>{ if(e.target.tagName==='IMG') e.preventDefault(); });
+  document.querySelectorAll('img').forEach(i=>i.setAttribute('draggable','false'));
 </script>
 
 </body>
